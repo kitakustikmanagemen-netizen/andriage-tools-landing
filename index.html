@@ -313,7 +313,7 @@
 </div>
 
 <main class="wrap" id="tools">
-  <div class="section-label">10 Tools — Diurutkan Sesuai Alur Produksi</div>
+  <div class="section-label">9 Tools — Diurutkan Sesuai Alur Produksi</div>
 
   <div class="grid" id="grid">
 
@@ -413,22 +413,9 @@
       </div>
     </div>
 
-    <div class="card" data-cat="video" data-status="soon" style="--cat-color: var(--c-video)">
-      <div class="card-top">
-        <div class="card-top-left"><span class="icon-badge">📡</span><span class="track mono">TRACK 07</span></div>
-        <span class="tag">Video &amp; Live</span>
-      </div>
-      <h3>Streaming Dashboard</h3>
-      <p>Pantau dan kelola aktivitas channel YouTube kamu dari satu tempat.</p>
-      <div class="cta">
-        <span class="live-mini"><span class="live-dot"></span><span class="live-count" data-min="1" data-max="8">-</span> aktif</span>
-        <span class="status soon">Segera Hadir</span>
-      </div>
-    </div>
-
     <div class="card" data-cat="musik" data-status="soon" style="--cat-color: var(--c-musik)">
       <div class="card-top">
-        <div class="card-top-left"><span class="icon-badge">🎶</span><span class="track mono">TRACK 08</span></div>
+        <div class="card-top-left"><span class="icon-badge">🎶</span><span class="track mono">TRACK 07</span></div>
         <span class="tag">Musik</span>
       </div>
       <h3>Karaoke</h3>
@@ -441,7 +428,7 @@
 
     <div class="card" data-cat="relax" data-status="soon" style="--cat-color: var(--c-relax)">
       <div class="card-top">
-        <div class="card-top-left"><span class="icon-badge">🎧</span><span class="track mono">TRACK 09</span></div>
+        <div class="card-top-left"><span class="icon-badge">🎧</span><span class="track mono">TRACK 08</span></div>
         <span class="tag">Relaksasi</span>
       </div>
       <h3>ASMR - Relaksasi</h3>
@@ -479,7 +466,7 @@
 <script>
   // Build EQ spectrum bars colored by category
   const spectrum = document.getElementById('spectrum');
-  const eqColors = ['--c-narasi','--c-religi','--c-religi','--c-religi','--c-musik','--c-musik','--c-musik','--c-video','--c-video','--c-musik','--c-relax','--c-bantuan'];
+  const eqColors = ['--c-narasi','--c-religi','--c-religi','--c-religi','--c-musik','--c-musik','--c-musik','--c-video','--c-musik','--c-relax','--c-bantuan'];
   eqColors.forEach((c,i)=>{
     const bar = document.createElement('div');
     bar.className = 'bar';
