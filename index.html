@@ -264,6 +264,43 @@
   }
   .card.help::before{ background: var(--c-bantuan); }
 
+  /* Access gate: lock badge + locked state */
+  .card.locked{ cursor:pointer; }
+  .card.locked:hover{ transform:none; border-color: var(--border); }
+  .card.locked h3, .card.locked p, .card.locked .cta{ opacity:0.5; }
+  .sub-item.locked{ cursor:pointer; opacity:0.6; }
+  .lock-badge{
+    position:absolute; top:14px; right:14px; width:26px; height:26px;
+    border-radius:50%; background: rgba(15,17,23,0.9); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; font-size:12px; z-index:2;
+  }
+  .sub-item{ position:relative; }
+  .sub-item .lock-badge{ position:static; width:auto; height:auto; background:none; border:none; font-size:13px; margin-left:6px; }
+
+  .gate-overlay{
+    position:fixed; inset:0; background:rgba(10,11,16,0.72);
+    display:none; align-items:center; justify-content:center; z-index:999; padding:20px;
+  }
+  .gate-overlay.show{ display:flex; }
+  .gate-modal{
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius);
+    max-width: 380px; width:100%; padding:26px; text-align:center;
+  }
+  .gate-modal .gate-icon{
+    width:52px; height:52px; border-radius:50%; margin:0 auto 16px;
+    background: color-mix(in srgb, var(--brand-red) 18%, transparent);
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .gate-modal h4{ font-family:'Bricolage Grotesque', sans-serif; font-size:17px; margin-bottom:8px; }
+  .gate-modal p{ color: var(--text-muted); font-size:13.5px; margin-bottom:20px; line-height:1.5; }
+  .gate-actions{ display:flex; flex-direction:column; gap:10px; }
+  .gate-btn{
+    display:block; padding:12px; border-radius: var(--radius-sm); font-size:14px; font-weight:600;
+    text-decoration:none; cursor:pointer; border:none; font-family:inherit;
+  }
+  .gate-btn.primary{ background: var(--brand-red); color:#fff; }
+  .gate-btn.secondary{ background:none; border:1px solid var(--border); color: var(--text-muted); }
+
   footer{
     border-top: 1px solid var(--border-soft); padding: 34px 0 50px;
     display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap: 16px;
@@ -319,7 +356,7 @@
 
   <div class="grid" id="grid">
 
-    <a class="card" href="https://story.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="narasi" style="--cat-color: var(--c-narasi)">
+    <a class="card" href="https://story.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="narasi" data-tool="story" style="--cat-color: var(--c-narasi)">
       <div class="card-top">
         <div class="card-top-left"><span class="icon-badge">📝</span><span class="track mono">TRACK 01</span></div>
         <span class="tag">Narasi</span>
@@ -348,7 +385,7 @@
         <span class="toggle-label"><span class="chev">▾</span> Buka</span>
       </button>
       <div class="sub-list">
-        <a class="sub-item" href="https://quran.andriage.my.id/" target="_blank" rel="noopener" style="text-decoration:none;">
+        <a class="sub-item" href="https://quran.andriage.my.id/" target="_blank" rel="noopener" data-tool="murottal" style="text-decoration:none;">
           <div class="sub-item-left"><span class="icon-badge">📖</span><div><span class="name">Qur'an Studio</span><span class="desc">Video &amp; subtitle Qur'an otomatis</span></div></div>
           <span class="go" style="color:var(--c-religi);">Buka →</span>
         </a>
@@ -356,14 +393,14 @@
           <div class="sub-item-left"><span class="icon-badge">🕋</span><div><span class="name">Dzikir Studio Video</span><span class="desc">Video dzikir dengan visual tenang</span></div></div>
           <span class="go">Segera</span>
         </div>
-        <a class="sub-item" href="https://shalwat.andriage.my.id/" target="_blank" rel="noopener" style="text-decoration:none;">
+        <a class="sub-item" href="https://shalwat.andriage.my.id/" target="_blank" rel="noopener" data-tool="murottal" style="text-decoration:none;">
           <div class="sub-item-left"><span class="icon-badge">🕌</span><div><span class="name">Shalawat Studio Video</span><span class="desc">Video shalawat siap tayang</span></div></div>
           <span class="go" style="color:var(--c-religi);">Buka →</span>
         </a>
       </div>
     </div>
 
-    <a class="card" href="https://musik.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" style="--cat-color: var(--c-musik)">
+    <a class="card" href="https://musik.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" data-tool="musik" style="--cat-color: var(--c-musik)">
       <div class="card-top">
         <div class="card-top-left"><span class="icon-badge">🎵</span><span class="track mono">TRACK 03</span></div>
         <span class="tag">Musik</span>
@@ -376,7 +413,7 @@
       </div>
     </a>
 
-    <a class="card" href="https://video.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" style="--cat-color: var(--c-musik)">
+    <a class="card" href="https://video.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" data-tool="video" style="--cat-color: var(--c-musik)">
       <div class="card-top">
         <div class="card-top-left"><span class="icon-badge">🎬</span><span class="track mono">TRACK 04</span></div>
         <span class="tag">Musik</span>
@@ -389,7 +426,7 @@
       </div>
     </a>
 
-    <a class="card" href="https://clipper.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="video" style="--cat-color: var(--c-video)">
+    <a class="card" href="https://clipper.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="video" data-tool="clipper" style="--cat-color: var(--c-video)">
       <div class="card-top">
         <div class="card-top-left"><span class="icon-badge">✂️</span><span class="track mono">TRACK 05</span></div>
         <span class="tag">Video &amp; Live</span>
@@ -402,7 +439,7 @@
       </div>
     </a>
 
-    <a class="card" href="https://karaoke.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" style="--cat-color: var(--c-musik)">
+    <a class="card" href="https://karaoke.andriage.my.id/" target="_blank" rel="noopener" data-status="connected" data-cat="musik" data-tool="karaoke" style="--cat-color: var(--c-musik)">
       <div class="card-top">
         <div class="card-top-left"><span class="icon-badge">🎶</span><span class="track mono">TRACK 06</span></div>
         <span class="tag">Musik</span>
@@ -519,6 +556,95 @@
     tick();
     setInterval(tick, 4000 + Math.random()*2000);
   });
+</script>
+
+<div class="gate-overlay" id="gateOverlay">
+  <div class="gate-modal">
+    <div class="gate-icon">🔒</div>
+    <h4 id="gateTitle">Tool ini belum bisa diakses</h4>
+    <p id="gateText">Tool ini eksklusif untuk pengguna terdaftar. Chat admin untuk dapat akses penuh, prosesnya cepat kok!</p>
+    <div class="gate-actions">
+      <a class="gate-btn primary" id="gatePrimaryBtn" href="https://hubungi.andriage.my.id/" target="_blank" rel="noopener">Hubungi Admin</a>
+      <button class="gate-btn secondary" id="gateCloseBtn" type="button">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const API_BASE = "https://api.andriage.my.id";
+  const LOGIN_URL = "https://login.andriage.my.id/";
+  const ADMIN_URL = "https://hubungi.andriage.my.id/";
+
+  const gateOverlay = document.getElementById('gateOverlay');
+  const gateTitle = document.getElementById('gateTitle');
+  const gateText = document.getElementById('gateText');
+  const gatePrimaryBtn = document.getElementById('gatePrimaryBtn');
+  const gateCloseBtn = document.getElementById('gateCloseBtn');
+
+  function openGate(reason){
+    if(reason === 'not_logged_in'){
+      gateTitle.textContent = 'Masuk dulu, yuk';
+      gateText.textContent = 'Kamu perlu masuk ke akunmu dulu sebelum bisa memakai tool ini.';
+      gatePrimaryBtn.textContent = 'Masuk ke Akun';
+      gatePrimaryBtn.href = LOGIN_URL;
+      gatePrimaryBtn.target = '_self';
+    } else {
+      gateTitle.textContent = 'Tool ini belum bisa diakses';
+      gateText.textContent = 'Tool ini eksklusif untuk pengguna terdaftar. Chat admin untuk dapat akses penuh, prosesnya cepat kok!';
+      gatePrimaryBtn.textContent = 'Hubungi Admin';
+      gatePrimaryBtn.href = ADMIN_URL;
+      gatePrimaryBtn.target = '_blank';
+    }
+    gateOverlay.classList.add('show');
+  }
+  function closeGate(){ gateOverlay.classList.remove('show'); }
+  gateCloseBtn.addEventListener('click', closeGate);
+  gateOverlay.addEventListener('click', (e)=>{ if(e.target === gateOverlay) closeGate(); });
+
+  async function checkAccess(slug){
+    try{
+      const res = await fetch(`${API_BASE}/check-access?tool=${encodeURIComponent(slug)}`, {
+        credentials: 'include'
+      });
+      return await res.json();
+    } catch(err){
+      return { access:false, reason:'error' };
+    }
+  }
+
+  function lockElement(el, reason){
+    el.classList.add('locked');
+    if(!el.querySelector('.lock-badge')){
+      const badge = document.createElement('span');
+      badge.className = 'lock-badge';
+      badge.textContent = '🔒';
+      el.appendChild(badge);
+    }
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      openGate(reason);
+    });
+  }
+
+  async function initGate(){
+    const gateEls = document.querySelectorAll('[data-tool]');
+    const slugs = [...new Set([...gateEls].map(el=>el.dataset.tool))];
+    const results = {};
+    await Promise.all(slugs.map(async slug=>{
+      results[slug] = await checkAccess(slug);
+    }));
+    gateEls.forEach(el=>{
+      const slug = el.dataset.tool;
+      const r = results[slug];
+      if(!r || !r.access){
+        lockElement(el, r ? r.reason : 'not_entitled');
+      }
+    });
+  }
+
+  initGate();
+})();
 </script>
 
 </body>
