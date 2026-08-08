@@ -304,42 +304,34 @@
   /* Tool slideshow */
   .tool-slideshow{
     position:relative; margin: 28px 0 8px; border-radius: var(--radius);
-    overflow:hidden; aspect-ratio: 21/9; background: var(--surface); border:1px solid var(--border);
+    overflow:hidden; aspect-ratio: 1376 / 768; background: var(--surface); border:1px solid var(--border);
   }
-  @media (max-width:700px){ .tool-slideshow{ aspect-ratio: 4/3; } }
-  .slideshow-track{ display:flex; height:100%; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+  .slideshow-track{ display:flex; height:100%; transition: transform .8s cubic-bezier(.4,0,.2,1); }
   .slide{ position:relative; min-width:100%; height:100%; flex-shrink:0; }
   .slide img{
-    width:100%; height:100%; object-fit:cover; object-position: top;
-    display:block; filter: saturate(1.05);
+    width:100%; height:100%; object-fit:cover; object-position: center;
+    display:block;
   }
-  .slide-overlay{
-    position:absolute; left:0; right:0; bottom:0;
-    padding: 20px 26px 24px;
-    background: linear-gradient(0deg, rgba(10,11,16,0.94) 10%, rgba(10,11,16,0.6) 55%, transparent 100%);
-  }
-  .slide-tag{
-    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px;
-    padding:4px 10px; border-radius:999px; margin-bottom:10px;
-    color: var(--slide-color); background: color-mix(in srgb, var(--slide-color) 18%, transparent);
-  }
-  .slide-overlay h3{ font-family:'Bricolage Grotesque', sans-serif; font-size:21px; margin:0 0 6px; }
-  .slide-overlay p{ color: var(--text-muted); font-size:13px; max-width:540px; margin:0; line-height:1.5; }
   .slide-nav{
     position:absolute; top:50%; transform:translateY(-50%); z-index:3;
-    width:36px; height:36px; border-radius:50%; border:1px solid var(--border);
-    background: rgba(15,17,23,0.7); color: var(--text); font-size:18px; cursor:pointer;
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--border);
+    background: rgba(15,17,23,0.7); color: var(--text); font-size:17px; cursor:pointer;
     display:flex; align-items:center; justify-content:center; line-height:1;
   }
   .slide-nav:hover{ background: rgba(15,17,23,0.9); border-color:#38405a; }
-  .slide-nav.prev{ left:14px; }
-  .slide-nav.next{ right:14px; }
-  .slide-dots{ position:absolute; bottom:14px; right:20px; display:flex; gap:6px; z-index:3; }
+  .slide-nav.prev{ left:10px; }
+  .slide-nav.next{ right:10px; }
+  .slide-dots{ position:absolute; bottom:10px; right:14px; display:flex; gap:6px; z-index:3; }
   .slide-dots .dot-btn{
     width:7px; height:7px; border-radius:50%; background: rgba(255,255,255,0.32);
     border:none; cursor:pointer; padding:0; transition: all .2s ease;
   }
   .slide-dots .dot-btn.active{ width:20px; border-radius:4px; background: var(--text); }
+  @media (max-width:520px){
+    .slide-nav{ width:28px; height:28px; font-size:15px; }
+    .slide-dots .dot-btn{ width:6px; height:6px; }
+    .slide-dots .dot-btn.active{ width:16px; }
+  }
 
   footer{
     border-top: 1px solid var(--border-soft); padding: 34px 0 50px;
@@ -697,14 +689,14 @@
 <script>
 (function(){
   const slides = [
-    { img:'assets/slide-story.png', tag:'Narasi', color:'--c-narasi', title:"Konten Story", desc:"Temukan ide dan susun naskah konten yang lagi ramai dibicarakan, dari riset topik sampai draf skrip." },
-    { img:'assets/slide-quran.png', tag:'Religi', color:'--c-religi', title:"Qur'an Studio", desc:"Video & subtitle Qur'an otomatis, lengkap dengan sinkronisasi ayat per ayat dan gaya visual yang menenangkan." },
-    { img:'assets/slide-dzikir.png', tag:'Religi', color:'--c-religi', title:"Dzikir Studio Video", desc:"Ubah lantunan dzikir jadi video bertimeline otomatis, semua proses berjalan lokal di perangkatmu." },
-    { img:'assets/slide-shalawat.png', tag:'Religi', color:'--c-religi', title:"Shalawat Studio Video", desc:"Studio lirik video shalawat siap tayang — sinkronisasi lirik cepat, semua proses lokal di perangkatmu." },
-    { img:'assets/slide-musik.png', tag:'Musik', color:'--c-musik', title:"Bikin Musik", desc:"Ciptakan musik dan lirik orisinal dengan bantuan AI, dari ide sampai jadi lagu utuh." },
-    { img:'assets/slide-video.png', tag:'Musik · Gratis', color:'--c-musik', title:"Musik Video", desc:"Rangkai visualizer dan editing video musik langsung dari satu studio — tool ini gratis dipakai." },
-    { img:'assets/slide-clipper.png', tag:'Video & Live', color:'--c-video', title:"Clipper", desc:"Potong video panjang jadi klip sinematik pendek secara otomatis, lengkap dengan subtitle & watermark." },
-    { img:'assets/slide-karaoke.png', tag:'Musik', color:'--c-musik', title:"Karaoke", desc:"Ubah audio jadi video karaoke lengkap dengan lirik berjalan, dalam beberapa klik." }
+    { img:'assets/slide-story.jpg', title:"Konten Story" },
+    { img:'assets/slide-quran.jpg', title:"Qur'an Studio" },
+    { img:'assets/slide-dzikir.jpg', title:"Dzikir Studio Video" },
+    { img:'assets/slide-shalawat.jpg', title:"Shalawat Studio Video" },
+    { img:'assets/slide-musik.jpg', title:"Bikin Musik" },
+    { img:'assets/slide-video.jpg', title:"Musik Video" },
+    { img:'assets/slide-clipper.jpg', title:"Clipper" },
+    { img:'assets/slide-karaoke.jpg', title:"Karaoke" }
   ];
 
   const track = document.getElementById('slideshowTrack');
@@ -716,14 +708,7 @@
   slides.forEach((s, i) => {
     const el = document.createElement('div');
     el.className = 'slide';
-    el.style.setProperty('--slide-color', `var(${s.color})`);
-    el.innerHTML = `
-      <img src="${s.img}" alt="${s.title}" loading="${i === 0 ? 'eager' : 'lazy'}">
-      <div class="slide-overlay">
-        <span class="slide-tag">${s.tag}</span>
-        <h3>${s.title}</h3>
-        <p>${s.desc}</p>
-      </div>`;
+    el.innerHTML = `<img src="${s.img}" alt="${s.title}" loading="${i === 0 ? 'eager' : 'lazy'}">`;
     track.appendChild(el);
 
     const dot = document.createElement('button');
@@ -736,7 +721,7 @@
 
   let current = 0;
   let timer = null;
-  const AUTO_MS = 5000;
+  const AUTO_MS = 7000;
 
   function render(){
     track.style.transform = `translateX(-${current * 100}%)`;
