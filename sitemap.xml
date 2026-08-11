@@ -6,17 +6,17 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://scriptstudio.andriage.my.id/</loc>
+    <loc>https://promptstudio.andriage.my.id/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://contentstrategy.andriage.my.id/</loc>
+    <loc>https://voice.andriage.my.id/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://visualmaker.andriage.my.id/</loc>
+    <loc>https://narasi.andriage.my.id/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
